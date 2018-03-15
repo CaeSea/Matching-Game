@@ -4,22 +4,24 @@
  let cards = [
  'diamond1',
  'diamond2',
- 'plane1',
- 'plane2',
+ 'paper-plane-o1',
+ 'paper-plane-o2',
  'anchor1',
  'anchor2',
  'bolt1',
  'bolt2',
- 'box1',
- 'box2',
+ 'cube1',
+ 'cube2',
  'leaf1',
  'leaf2',
- 'bike1',
- 'bike2',
+ 'bicycle1',
+ 'bicycle2',
  'bomb1',
  'bomb2'
 ];
 
+//document.getElementById('deck-container').innerHTML = createCardLayout(shuffle(cards));
+//console.log(createCardLayout(shuffle(cards)));
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -28,16 +30,15 @@
  */
 
 // Function to create html for shuffled cards.
-  function createCardLayout(shuffledCards) {
-    let symbol = "";
-    let html = '<ul class="deck">';
-    for (i = 0; i < shuffledCards.length; i++) {
-      symbol = shuffledCards[i].substring(0, shuffledCards[i].length - 1);
-      html += '<li class="card"><i class="fa ' + symbol + ' symbol"></li>';
-   }
-   html += '</ul>';
-   return html;
+function createCardLayout(shuffledCards) {
+  let html = "";
+  let symbol = "";
+  for (i = 0; i < shuffledCards.length; i++) {
+    symbol = shuffledCards[i].substring(0, shuffledCards[i].length - 1);
+    html += '<li class="card"><i class="fa fa-' + symbol + ' symbol"></li>';
   }
+  return html;
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -50,10 +51,8 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
-
 
 /*
  * set up the event listener for a card. If a card is clicked:
