@@ -1,0 +1,26 @@
+html,
+body {
+  margin: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul.stars li {
+  display: inline;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+header,
+.score-panel {
+  text-align: center;
+}
+
+.restart {
+  display: inline-block;
+}
