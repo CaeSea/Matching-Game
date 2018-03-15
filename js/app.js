@@ -1,34 +1,3 @@
-/*
- * Create a list that holds all of your cards
- */
- let cards = [
- 'diamond1',
- 'diamond2',
- 'paper-plane-o1',
- 'paper-plane-o2',
- 'anchor1',
- 'anchor2',
- 'bolt1',
- 'bolt2',
- 'cube1',
- 'cube2',
- 'leaf1',
- 'leaf2',
- 'bicycle1',
- 'bicycle2',
- 'bomb1',
- 'bomb2'
-];
-
-document.getElementById('deck-container').innerHTML = createCardLayout(shuffle(cards));
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
 // Function to create html for shuffled cards.
 function createCardLayout(shuffledCards) {
   let html = "";
@@ -53,6 +22,12 @@ function shuffle(array) {
     }
     return array;
 }
+
+/* Array that holds all cards */
+let cards = ['diamond1','diamond2','paper-plane-o1','paper-plane-o2','anchor1','anchor2','bolt1','bolt2','cube1','cube2','leaf1','leaf2','bicycle1','bicycle2','bomb1','bomb2'];
+
+/*  Adds each card's HTML to the page */
+document.getElementById('deck-container').innerHTML = createCardLayout(shuffle(cards));
 
 /*
  * set up the event listener for a card. If a card is clicked:
