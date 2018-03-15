@@ -1,7 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-
+ let cards = [diamond1, diamond2, plane1, plane2, anchor1, anchor2, bolt1, bolt2, box1, box2, leaf1, leaf2, bike1, bike2, bomb1, bomb2];
 
 /*
  * Display the cards on the page
