@@ -3,14 +3,6 @@ body {
   margin: 0;
 }
 
-ul {
-  list-style-type: none;
-}
-
-ul.stars li {
-  display: inline;
-}
-
 .container {
   width: 90%;
   margin: 0 auto;
@@ -19,8 +11,45 @@ ul.stars li {
 header,
 .score-panel {
   text-align: center;
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul.stars li {
+  display: inline;
 }
 
 .restart {
   display: inline-block;
+}
+
+ul.deck {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 45%;
+  margin: 0 auto;
+  padding: 20px 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+li.card {
+  display: flex;
+  flex-basis: 19.5%;
+  margin: 2%;
+  height: 115px;
+  border: 1px solid black;
+  border-radius: 20px;
+  align-content: center;
+  justify-content: center;
+}
+
+.symbol {
+  margin-top: 30%;
+  font-size: 2.5em;
 }
