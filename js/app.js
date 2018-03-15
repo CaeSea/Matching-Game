@@ -20,8 +20,8 @@
  'bomb2'
 ];
 
-//document.getElementById('deck-container').innerHTML = createCardLayout(shuffle(cards));
-//console.log(createCardLayout(shuffle(cards)));
+document.getElementById('deck-container').innerHTML = createCardLayout(shuffle(cards));
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -35,7 +35,7 @@ function createCardLayout(shuffledCards) {
   let symbol = "";
   for (i = 0; i < shuffledCards.length; i++) {
     symbol = shuffledCards[i].substring(0, shuffledCards[i].length - 1);
-    html += '<li class="card"><i class="fa fa-' + symbol + ' symbol"></li>';
+    html += '<li class="card"><i class="fa fa-' + symbol +' symbol"></i></li>';
   }
   return html;
 }
