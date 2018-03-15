@@ -27,6 +27,18 @@
  *   - add each card's HTML to the page
  */
 
+// Function to create html for shuffled cards.
+  function createCardLayout(shuffledCards) {
+    let symbol = "";
+    let html = '<ul class="deck">';
+    for (i = 0; i < shuffledCards.length; i++) {
+      symbol = shuffledCards[i].substring(0, shuffledCards[i].length - 1);
+      html += '<li class="card"><i class="fa ' + symbol + ' symbol"></li>';
+   }
+   html += '</ul>';
+   return html;
+  }
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     let currentIndex = array.length, temporaryValue, randomIndex;
