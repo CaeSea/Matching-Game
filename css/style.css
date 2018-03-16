@@ -50,6 +50,7 @@ li.card {
 }
 
 .symbol {
+  //display: none;
   margin-top: 30%;
   font-size: 2.5em;
 }
