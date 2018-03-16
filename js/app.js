@@ -4,7 +4,7 @@ function createCardLayout(shuffledCards) {
   let symbol = "";
   for (i = 0; i < shuffledCards.length; i++) {
     symbol = shuffledCards[i].substring(0, shuffledCards[i].length - 1);
-    html += '<li class="card"><i class="fa fa-' + symbol +' symbol"></i></li>';
+    html += '<div class="card"><li class="card"><i class="fa fa-' + symbol +' symbol"></i></li></div>';
   }
   return html;
 }
@@ -34,9 +34,9 @@ let cards = ['diamond1','diamond2','paper-plane-o1','paper-plane-o2','anchor1','
 document.getElementById('deck-container').innerHTML = createCardLayout(shuffle(cards));
 
 /* Adds the click event listener the cards */
-let selectedCard = document.querySelectorAll("li.card");
-for(let i=0; i < selectedCard.length; i++) {
-  selectedCard[i].addEventListener('click', displaySymbol);
+let clickedCard = document.querySelectorAll("div.card");
+for(let i=0; i < clickedCard.length; i++) {
+  clickedCard[i].addEventListener('click', displaySymbol);
 }
 
 /*

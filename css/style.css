@@ -38,7 +38,7 @@ ul.deck {
   border-radius: 10px;
 }
 
-li.card {
+.card {
   display: flex;
   flex-basis: 19.5%;
   margin: 2%;
@@ -49,8 +49,17 @@ li.card {
   justify-content: center;
 }
 
+div.card {
+  background-color: white;
+}
+
+li.card {
+  flex-basis: 100%;
+  border: none;
+  z-index: -1;
+}
+
 .symbol {
-  //display: none;
-  margin-top: 30%;
+  margin-top: 30px;
   font-size: 2.5em;
 }
