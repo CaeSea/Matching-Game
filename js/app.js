@@ -4,7 +4,7 @@ function createCardLayout(shuffledCards) {
   let symbol = "";
   for (i = 0; i < shuffledCards.length; i++) {
     symbol = shuffledCards[i].substring(0, shuffledCards[i].length - 1);
-    html += '<div class="card"><li class="card"><i class="fa fa-' + symbol +' symbol"></i></li></div>';
+    html += '<div class="card" id="'+symbol+'"><li class="card"><i class="fa fa-'+symbol+' symbol"></i></li></div>';
   }
   return html;
 }
@@ -24,10 +24,18 @@ function shuffle(array) {
 }
 
 function displaySymbol() {
-  
+  /*
+  1. add the class name to the openCards array
+  2. if the class names match then keep cards open. FUNCTION
+  3. if they do not match then close card and remove from list. FUNCTION
+  */
+  this.style.zIndex = -2;
+  openCards.push(this.id)
+  console.log(openCards);
 }
 
-/* Array that holds all cards */
+/* Array that holds all cards and the currently open cards */
+let openCards = [];
 let cards = ['diamond1','diamond2','paper-plane-o1','paper-plane-o2','anchor1','anchor2','bolt1','bolt2','cube1','cube2','leaf1','leaf2','bicycle1','bicycle2','bomb1','bomb2'];
 
 /*  Adds each card's HTML to the page */
