@@ -26,12 +26,31 @@ function shuffle(array) {
 function displaySymbol() {
   /*
   1. add the class name to the openCards array
-  2. if the class names match then keep cards open. FUNCTION
+  2. if the id names match then keep cards open. FUNCTION
   3. if they do not match then close card and remove from list. FUNCTION
   */
-  this.style.zIndex = -2;
-  openCards.push(this.id)
-  console.log(openCards);
+  this.style.zIndex = -2; // Turns over card
+  openCards.push(this.id); // Adds id to openCards array.
+  if(openCards.length >= 3) { // If the openCards array is bigger than 2
+    openCards = []; // Empty array
+    openCards.push(this.id); // Push the next cards id to the array
+  }
+  if (checkMatch(openCards, this.id) == 2) {
+    //cards have been matched.
+    alert('matched');
+  }
+
+}
+
+// Function to check if cards have been matched. Counts the duplicates in openCards array.
+function checkMatch(array, card) {
+  let count = 0;
+  for (let i = 0; i < array.length; i++) {
+      if (array[i] === card) {
+          count++;
+      }
+  }
+  return count;
 }
 
 /* Array that holds all cards and the currently open cards */
