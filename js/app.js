@@ -4,7 +4,7 @@ function createCardLayout(shuffledCards) {
   let symbol = "";
   for (i = 0; i < shuffledCards.length; i++) {
     symbol = shuffledCards[i].substring(0, shuffledCards[i].length - 1);
-    html += '<div class="card" id="'+symbol+'"><li class="card"><i class="fa fa-'+symbol+' symbol"></i></li></div>';
+    html += '<div class="card-container"><li class="card"><i class="fa fa-'+symbol+' symbol"></i></li></div>';
   }
   return html;
 }
@@ -29,17 +29,18 @@ function displaySymbol() {
   2. if the id names match then keep cards open. FUNCTION
   3. if they do not match then close card and remove from list. FUNCTION
   */
-  this.style.zIndex = -2; // Turns over card
+  this.classList.toggle('card-flip');
+  //this.style.zIndex = -2; // Turns over card
   openCards.push(this.id); // Adds id to openCards array.
-  if(openCards.length >= 3) { // If the openCards array is bigger than 2
-    openCards = []; // Empty array
-    openCards.push(this.id); // Push the next cards id to the array
+  if(openCards.length == 2) { // If the openCards array.length is 2.
+    if (checkMatch(openCards, this.id) == 2) { // if the cards match.
+      //matchedCards.push(openCards);  // cards have been matched, add cards to matchedCards array.
+    }
+    openCards = []; // Empty openCards array
+    //openCards.push(this.id); // Push the next cards id to the openCards array
   }
-  if (checkMatch(openCards, this.id) == 2) {
-    //cards have been matched.
-    alert('matched');
-  }
-
+  //console.log(openCards);
+  //console.log(matchedCards);
 }
 
 // Function to check if cards have been matched. Counts the duplicates in openCards array.
@@ -55,6 +56,7 @@ function checkMatch(array, card) {
 
 /* Array that holds all cards and the currently open cards */
 let openCards = [];
+let matchedCards = [];
 let cards = ['diamond1','diamond2','paper-plane-o1','paper-plane-o2','anchor1','anchor2','bolt1','bolt2','cube1','cube2','leaf1','leaf2','bicycle1','bicycle2','bomb1','bomb2'];
 
 /*  Adds each card's HTML to the page */
