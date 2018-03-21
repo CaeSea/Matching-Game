@@ -4,7 +4,7 @@ function createCardLayout(shuffledCards) {
   let symbol = "";
   for (i = 0; i < shuffledCards.length; i++) {
     symbol = shuffledCards[i].substring(0, shuffledCards[i].length - 1);
-    html += '<div class="card-container"><li class="card" id="'+symbol+'"><i class="fa fa-'+symbol+' symbol"></i></li></div>';
+    html += '<div class="card-container"><div class="card" id="'+symbol+'"><li class="front"></li><li class="back"><i class="fa fa-'+symbol+' symbol"></i></li></div></div>';
   }
   return html;
 }
