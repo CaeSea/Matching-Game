@@ -31,14 +31,20 @@ function displaySymbol() {
   */
   this.classList.toggle('flip-card');
   openCards.push(this.id); // Adds id to openCards array.
-  if(openCards.length == 2) { // If the openCards array.length is 2.
+  if (openCards.length == 2) {
     if (checkMatch(openCards, this.id) == 2) { // if the cards match.
-      //matchedCards.push(openCards);  // cards have been matched, add cards to matchedCards array.
+      // Cards have been matched.
+      // Add them to the matchedCards Array
+      // Keep the cards open
+      alert('match');
+    } else {
+      // If the cards don't match
+      // Flip the cards back over.
+      // Empty the openCard array.
+      openCards = [];
     }
-    openCards = []; // Empty openCards array
-    //openCards.push(this.id); // Push the next cards id to the openCards array
-  }
-  console.log(openCards);
+  } //
+  //console.log(openCards);
   //console.log(matchedCards);
 }
 
