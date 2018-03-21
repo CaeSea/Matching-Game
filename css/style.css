@@ -39,6 +39,8 @@ ul.deck {
 }
 
 .card-container {
+  display: flex;
+  flex-basis: 25%;
   -webkit-perspective: 800px;
   -moz-perspective: 800px;
   -o-perspective: 800px;
@@ -46,9 +48,8 @@ ul.deck {
 }
 
 .card {
-  display: flex;
-  flex-basis: 19.5%;
-  margin: 2%;
+  flex-basis: 100%;
+  margin: 8% 5%;
   height: 115px;
   border: 1px solid black;
   border-radius: 10px;
