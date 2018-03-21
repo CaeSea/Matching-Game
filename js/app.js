@@ -4,7 +4,7 @@ function createCardLayout(shuffledCards) {
   let symbol = "";
   for (i = 0; i < shuffledCards.length; i++) {
     symbol = shuffledCards[i].substring(0, shuffledCards[i].length - 1);
-    html += '<div class="card-container"><li class="card"><i class="fa fa-'+symbol+' symbol"></i></li></div>';
+    html += '<div class="card-container"><li class="card" id="'+symbol+'"><i class="fa fa-'+symbol+' symbol"></i></li></div>';
   }
   return html;
 }
@@ -29,8 +29,7 @@ function displaySymbol() {
   2. if the id names match then keep cards open. FUNCTION
   3. if they do not match then close card and remove from list. FUNCTION
   */
-  this.classList.toggle('card-flip');
-  //this.style.zIndex = -2; // Turns over card
+  this.classList.toggle('flip-card');
   openCards.push(this.id); // Adds id to openCards array.
   if(openCards.length == 2) { // If the openCards array.length is 2.
     if (checkMatch(openCards, this.id) == 2) { // if the cards match.
@@ -39,7 +38,7 @@ function displaySymbol() {
     openCards = []; // Empty openCards array
     //openCards.push(this.id); // Push the next cards id to the openCards array
   }
-  //console.log(openCards);
+  console.log(openCards);
   //console.log(matchedCards);
 }
 
@@ -63,7 +62,7 @@ let cards = ['diamond1','diamond2','paper-plane-o1','paper-plane-o2','anchor1','
 document.getElementById('deck-container').innerHTML = createCardLayout(shuffle(cards));
 
 /* Adds the click event listener the cards */
-let clickedCard = document.querySelectorAll("div.card");
+let clickedCard = document.querySelectorAll(".card");
 for(let i=0; i < clickedCard.length; i++) {
   clickedCard[i].addEventListener('click', displaySymbol);
 }
