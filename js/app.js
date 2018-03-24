@@ -24,28 +24,53 @@ function shuffle(array) {
 }
 
 function displaySymbol() {
-  /*
-  1. add the class name to the openCards array
-  2. if the id names match then keep cards open. FUNCTION
-  3. if they do not match then close card and remove from list. FUNCTION
-  */
-  this.classList.toggle('flip-card');
-  openCards.push(this.id); // Adds id to openCards array.
-  if (openCards.length == 2) {
+  // Remove the unflip card class.
+  if (this.classList.contains('unflip-card')) {
+     this.classList.remove('unflip-card');  // If the card has been unflipped before the we must remove that class.
+   }
+  // Flip the card.
+  this.classList.add('flip-card');
+
+  flippedCards.push(this); // Add the div to flippedCards array
+  openCards.push(this.id); // Adds card id to openCards array.
+
+  if (openCards.length == 2) { // If 2 Cards have been flipped.
     if (checkMatch(openCards, this.id) == 2) { // if the cards match.
       // Cards have been matched.
-      // Add them to the matchedCards Array
-      // Keep the cards open
-      alert('match');
-    } else {
-      // If the cards don't match
-      // Flip the cards back over.
-      // Empty the openCard array.
+
+      /*
+      Copy the flippedCards array to the matchedCards Array if matchedCards is empty
+      else push the flippedCards array to the end of the matchedCards.
+      */
+      if (matchedCards.length == 0) {
+        matchedCards = flippedCards.splice(0);
+      } else {
+        matchedCards.concat(flippedCards);
+      }
+
+      // Empty the flippedCards array.
+      flippedCards = [];
+
+      // Empty the openCards array.
       openCards = [];
+
+    } else { // If the cards don't match
+    // We need to flip the cards back again.
+
+    if (!matchedCards.includes(this)) {
+      for (let flippedCard of flippedCards) {
+        flippedCard.classList.remove('flip-card'); // Flips the cards back over.
+        flippedCard.classList.add('unflip-card'); // Flips the cards back over.
+      }
     }
-  } //
-  //console.log(openCards);
+    // Empty the flippedCards array.
+    flippedCards = [];
+    // Empty the openCards array.
+    openCards = [];
+  }
+}
   //console.log(matchedCards);
+  console.log(openCards);
 }
 
 // Function to check if cards have been matched. Counts the duplicates in openCards array.
@@ -62,15 +87,16 @@ function checkMatch(array, card) {
 /* Array that holds all cards and the currently open cards */
 let openCards = [];
 let matchedCards = [];
+let flippedCards = [];
 let cards = ['diamond1','diamond2','paper-plane-o1','paper-plane-o2','anchor1','anchor2','bolt1','bolt2','cube1','cube2','leaf1','leaf2','bicycle1','bicycle2','bomb1','bomb2'];
 
 /*  Adds each card's HTML to the page */
 document.getElementById('deck-container').innerHTML = createCardLayout(shuffle(cards));
 
 /* Adds the click event listener the cards */
-let clickedCard = document.querySelectorAll(".card");
-for(let i=0; i < clickedCard.length; i++) {
-  clickedCard[i].addEventListener('click', displaySymbol);
+let clickedCards = document.querySelectorAll(".card");
+for(clickedCard of clickedCards) {
+  clickedCard.addEventListener('click', displaySymbol);
 }
 
 /*
