@@ -24,20 +24,24 @@ function shuffle(array) {
 }
 
 function displaySymbol() {
-  // Remove the unflip card class.
-  if (this.classList.contains('unflip-card')) {
-     this.classList.remove('unflip-card');  // If the card has been unflipped before the we must remove that class.
+  // Remove the reset card class.
+
+  if (this.classList.contains('reset-card')) {
+     this.classList.remove('reset-card');  // If the card has been unflipped before the we must remove that class.
    }
   // Flip the card.
-  this.classList.add('flip-card');
 
   flippedCards.push(this); // Add the div to flippedCards array
   openCards.push(this.id); // Adds card id to openCards array.
 
+  if (flippedCards.length === 1) {
+    this.classList.add('flip-card');
+  }
+
   if (openCards.length == 2) { // If 2 Cards have been flipped.
     if (checkMatch(openCards, this.id) == 2) { // if the cards match.
       // Cards have been matched.
-
+      this.classList.add('flip-card');
       /*
       Copy the flippedCards array to the matchedCards Array if matchedCards is empty
       else push the flippedCards array to the end of the matchedCards.
@@ -47,30 +51,30 @@ function displaySymbol() {
       } else {
         matchedCards.concat(flippedCards);
       }
-
       // Empty the flippedCards array.
       flippedCards = [];
-
       // Empty the openCards array.
       openCards = [];
 
     } else { // If the cards don't match
+
     // We need to flip the cards back again.
 
     if (!matchedCards.includes(this)) {
-      for (let flippedCard of flippedCards) {
-        flippedCard.classList.remove('flip-card'); // Flips the cards back over.
-        flippedCard.classList.add('unflip-card'); // Flips the cards back over.
-      }
+      flippedCards[1].classList.add('flip-card');
+      setTimeout(function(){
+        flippedCards[0].classList.remove('flip-card');
+        flippedCards[0].classList.add('reset-card');
+        flippedCards[1].classList.remove('flip-card');
+        flippedCards[1].classList.add('reset-card');
+        // Empty the flippedCards array.
+        flippedCards = [];
+      }, 1500);
     }
-    // Empty the flippedCards array.
-    flippedCards = [];
     // Empty the openCards array.
     openCards = [];
   }
-}
-  //console.log(matchedCards);
-  console.log(openCards);
+ }
 }
 
 // Function to check if cards have been matched. Counts the duplicates in openCards array.

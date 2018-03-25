@@ -89,16 +89,16 @@ ul.deck {
   transform: rotateY( 180deg );
 }
 
-.unflip-card {
-  -webkit-transform: rotateY( 360deg );
-  -moz-transform: rotateY( 360deg );
-  -o-transform: rotateY( 360deg );
-  transform: rotateY( 360deg );
+.reset-card {
+  -webkit-transform: rotateY( 0deg );
+  -moz-transform: rotateY( 0deg );
+  -o-transform: rotateY( 0deg );
+  transform: rotateY( 0deg );
 }
 
 .symbol {
   position: absolute;
   top: 30%;
-  left: 30%;
+  left: 25%;
   font-size: 2.5em;
 }
