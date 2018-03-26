@@ -8,7 +8,6 @@ function createCardLayout(shuffledCards) {
   }
   return html;
 }
-
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     let currentIndex = array.length, temporaryValue, randomIndex;
@@ -22,7 +21,7 @@ function shuffle(array) {
     }
     return array;
 }
-
+// Flips each card on click.
 function displaySymbol() {
   // Remove the reset card class.
   if (this.classList.contains('reset-card')) {
@@ -44,7 +43,7 @@ function displaySymbol() {
     checkMatch();
  }
 }
-
+// Checks if cards match on each flip.
 function checkMatch() {
   if (openCards[0] === openCards[1]) { // if the cards match.
 
@@ -58,7 +57,7 @@ function checkMatch() {
     cardsDontMatch();
  }
 }
-
+// Adds the matched cards to a matched cards array.
 function cardsMatch() {
   /*
   Copy the flippedCards array to the matchedCards Array if matchedCards is empty
@@ -74,7 +73,7 @@ function cardsMatch() {
   // Empty the openCards array.
   openCards = [];
 }
-
+// Turns all unmatched cards back over.
 function cardsDontMatch() {
   // Flip the 2nd clicked card.
   flippedCards[1].classList.add('flip-card');
@@ -94,21 +93,21 @@ function cardsDontMatch() {
   // Empty the openCards array.
   openCards = [];
 }
-
+// Disables the clicking of cards whilst 2 have already been picked.
 function disableCards() {
   //let cardsToDisable = document.querySelectorAll('.card');
   for(let clickedCard of clickedCards) {
     clickedCard.style.pointerEvents = "none";
   }
 }
-
+// Re-enables clicking of cards.
 function enableCards() {
   //let cardsToDisable = document.querySelectorAll('.card');
   for(let clickedCard of clickedCards) {
     clickedCard.style.removeProperty('pointer-events');
   }
 }
-
+// Counts the number of moves and takes away stars based on number of moves.
 function moveRating() {
   const starsHolder = document.querySelector('.stars');
   const stars = starsHolder.children;
@@ -127,9 +126,9 @@ let openCards = [];
 let matchedCards = [];
 let flippedCards = [];
 let cards = ['diamond1','diamond2','paper-plane-o1','paper-plane-o2','anchor1','anchor2','bolt1','bolt2','cube1','cube2','leaf1','leaf2','bicycle1','bicycle2','bomb1','bomb2'];
-
 // move counter
 let moveCount = 0;
+
 /*  Adds each card's HTML to the page */
 document.getElementById('deck-container').innerHTML = createCardLayout(shuffle(cards));
 
