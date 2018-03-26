@@ -66,8 +66,9 @@ function cardsMatch() {
   if (matchedCards.length == 0) {
     matchedCards = flippedCards.splice(0);
   } else {
-    matchedCards.concat(flippedCards);
+    matchedCards.push(...flippedCards);
   }
+  finishGame();
   // Empty the flippedCards array.
   flippedCards = [];
   // Empty the openCards array.
@@ -121,6 +122,11 @@ function moveRating() {
   }
 }
 
+function finishGame() {
+  if(matchedCards.length === 16) {
+    
+  }
+}
 /* Array that holds all cards and the currently open cards */
 let openCards = [];
 let matchedCards = [];
