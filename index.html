@@ -9,20 +9,29 @@
   </head>
   <body>
     <div class="container">
-        <header>
-            <h1>Matching Game</h1>
-        </header>
+      <header>
+        <h1>Matching Game</h1>
+      </header>
 
-        <section class="score-panel">
-        	<ul class="stars">
-        		<li id="star-one"><i class="fa fa-star"></i></li>
-        		<li id="star-two"><i class="fa fa-star"></i></li>
-        		<li id="star-three"><i class="fa fa-star"></i></li>
-        	</ul>
-        	<span class="moves">0</span> Move(s)
-          <div class="restart" onclick="restartGame()">
-        		<i class="fa fa-repeat"></i>
-        	</div>
+      <div id="myModal" class="modal">
+
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p class="modal-restart" onclick="restartGame()"><i class="fa fa-repeat"></i> Play again.</p>
+        </div>
+
+      </div>
+
+      <section class="score-panel">
+      	<ul class="stars">
+      		<li id="star-one"><i class="fa fa-star"></i></li>
+      		<li id="star-two"><i class="fa fa-star"></i></li>
+      		<li id="star-three"><i class="fa fa-star"></i></li>
+      	</ul>
+      	<span class="moves">0</span> Move(s)
+        <div class="restart" onclick="restartGame()">
+      		<i class="fa fa-repeat"></i>
+      	</div>
         </section>
 
         <ul class="deck" id="deck-container">

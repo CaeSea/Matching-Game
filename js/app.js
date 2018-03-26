@@ -122,18 +122,38 @@ function moveRating() {
   }
 }
 
+function restartGame() {
+
+}
+
 function finishGame() {
   if(matchedCards.length === 16) {
-    
+    // Game has been won.
   }
 }
-/* Array that holds all cards and the currently open cards */
+
+/* Variable Declarations */
 let openCards = [];
 let matchedCards = [];
 let flippedCards = [];
 let cards = ['diamond1','diamond2','paper-plane-o1','paper-plane-o2','anchor1','anchor2','bolt1','bolt2','cube1','cube2','leaf1','leaf2','bicycle1','bicycle2','bomb1','bomb2'];
 // move counter
 let moveCount = 0;
+
+/*------- Handles closing the congratulations modal ---------*/
+const modal = document.getElementById('myModal');
+// Get the <span> element that closes the modal
+const span = document.getElementsByClassName("close")[0];
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 
 /*  Adds each card's HTML to the page */
 document.getElementById('deck-container').innerHTML = createCardLayout(shuffle(cards));
