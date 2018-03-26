@@ -24,9 +24,6 @@ function shuffle(array) {
 }
 
 function displaySymbol() {
-
-  //starRating();
-
   // Remove the reset card class.
   if (this.classList.contains('reset-card')) {
      this.classList.remove('reset-card');  // If the card has been unflipped before the we must remove that class.
@@ -43,6 +40,7 @@ function displaySymbol() {
   if (openCards.length == 2) { // If 2 Cards have been flipped.
     // Cards have been matched.
     this.classList.add('flip-card');
+    moveRating();
     checkMatch();
  }
 }
@@ -111,11 +109,17 @@ function enableCards() {
   }
 }
 
-function starRating() {
-  const stars = document.querySelectorAll('#star');
+function moveRating() {
+  const starsHolder = document.querySelector('.stars');
+  const stars = starsHolder.children;
+  const moveCounter = document.querySelector('.moves');
   moveCount++;
-  console.log(moveCount);
-
+  moveCounter.innerHTML = moveCount;
+  if (moveCount === 9) {
+    starsHolder.removeChild(stars[0]);
+  } else if(moveCount === 14) {
+    starsHolder.removeChild(stars[1]);
+  }
 }
 
 /* Array that holds all cards and the currently open cards */
