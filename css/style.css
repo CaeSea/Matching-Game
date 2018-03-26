@@ -96,11 +96,6 @@ ul.deck {
   transform: rotateY( 0deg );
 }
 
-.disabled {
-	pointer-events: none;
-	opacity: 0.9;
-}
-
 .symbol {
   position: absolute;
   top: 30%;

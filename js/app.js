@@ -37,50 +37,64 @@ function displaySymbol() {
 
   if (flippedCards.length === 1) {
     this.classList.add('flip-card');
+    this.style.pointerEvents = "none";
   }
 
   if (openCards.length == 2) { // If 2 Cards have been flipped.
-    if (openCards[0] === openCards[1]) { // if the cards match.
-      // Cards have been matched.
-      this.classList.add('flip-card');
-      /*
-      Copy the flippedCards array to the matchedCards Array if matchedCards is empty
-      else push the flippedCards array to the end of the matchedCards.
-      */
-      if (matchedCards.length == 0) {
-        matchedCards = flippedCards.splice(0);
-      } else {
-        matchedCards.concat(flippedCards);
-      }
-      // Empty the flippedCards array.
-      flippedCards = [];
-      // Empty the openCards array.
-      openCards = [];
+    checkMatch();
+ }
+}
 
-    } else { // If the cards don't match
+function checkMatch() {
+  if (openCards[0] === openCards[1]) { // if the cards match.
+
+    cardsMatch();
+
+  } else { // If the cards don't match
 
     //disableCards - A way to disable all cards until code below is run.
     disableCards();
 
-    // Flip the 2nd clicked card.
-    flippedCards[1].classList.add('flip-card');
-
-    if (!matchedCards.includes(this)) { // If the cards have not yet been matched.
-      setTimeout(function(){
-        flippedCards[0].classList.remove('flip-card');
-        flippedCards[0].classList.add('reset-card');
-        flippedCards[1].classList.remove('flip-card');
-        flippedCards[1].classList.add('reset-card');
-        // enable the cards again.
-        enableCards();
-        // Empty the flippedCards array.
-        flippedCards = [];
-      }, 1500);
-    }
-    // Empty the openCards array.
-    openCards = [];
-  }
+    cardsDontMatch();
  }
+}
+
+function cardsMatch() {
+  // Cards have been matched.
+  this.classList.add('flip-card');
+  /*
+  Copy the flippedCards array to the matchedCards Array if matchedCards is empty
+  else push the flippedCards array to the end of the matchedCards.
+  */
+  if (matchedCards.length == 0) {
+    matchedCards = flippedCards.splice(0);
+  } else {
+    matchedCards.concat(flippedCards);
+  }
+  // Empty the flippedCards array.
+  flippedCards = [];
+  // Empty the openCards array.
+  openCards = [];
+}
+
+function cardsDontMatch() {
+  // Flip the 2nd clicked card.
+  flippedCards[1].classList.add('flip-card');
+
+  if (!matchedCards.includes(this)) { // If the cards have not yet been matched.
+    setTimeout(function(){
+      flippedCards[0].classList.remove('flip-card');
+      flippedCards[0].classList.add('reset-card');
+      flippedCards[1].classList.remove('flip-card');
+      flippedCards[1].classList.add('reset-card');
+      // enable the cards again.
+      enableCards();
+      // Empty the flippedCards array.
+      flippedCards = [];
+    }, 1500);
+  }
+  // Empty the openCards array.
+  openCards = [];
 }
 
 function disableCards() {
