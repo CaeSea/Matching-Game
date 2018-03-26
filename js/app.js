@@ -24,12 +24,13 @@ function shuffle(array) {
 }
 
 function displaySymbol() {
-  // Remove the reset card class.
 
+  //starRating();
+
+  // Remove the reset card class.
   if (this.classList.contains('reset-card')) {
      this.classList.remove('reset-card');  // If the card has been unflipped before the we must remove that class.
    }
-  // Flip the card.
 
   flippedCards.push(this); // Add the div to flippedCards array
   openCards.push(this.id); // Adds card id to openCards array.
@@ -39,7 +40,7 @@ function displaySymbol() {
   }
 
   if (openCards.length == 2) { // If 2 Cards have been flipped.
-    if (checkMatch(openCards, this.id) == 2) { // if the cards match.
+    if (openCards[0] === openCards[1]) { // if the cards match.
       // Cards have been matched.
       this.classList.add('flip-card');
       /*
@@ -58,15 +59,20 @@ function displaySymbol() {
 
     } else { // If the cards don't match
 
-    // We need to flip the cards back again.
+    //disableCards - A way to disable all cards until code below is run.
+    disableCards();
 
-    if (!matchedCards.includes(this)) {
-      flippedCards[1].classList.add('flip-card');
+    // Flip the 2nd clicked card.
+    flippedCards[1].classList.add('flip-card');
+
+    if (!matchedCards.includes(this)) { // If the cards have not yet been matched.
       setTimeout(function(){
         flippedCards[0].classList.remove('flip-card');
         flippedCards[0].classList.add('reset-card');
         flippedCards[1].classList.remove('flip-card');
         flippedCards[1].classList.add('reset-card');
+        // enable the cards again.
+        enableCards();
         // Empty the flippedCards array.
         flippedCards = [];
       }, 1500);
@@ -77,15 +83,25 @@ function displaySymbol() {
  }
 }
 
-// Function to check if cards have been matched. Counts the duplicates in openCards array.
-function checkMatch(array, card) {
-  let count = 0;
-  for (let i = 0; i < array.length; i++) {
-      if (array[i] === card) {
-          count++;
-      }
+function disableCards() {
+  //let cardsToDisable = document.querySelectorAll('.card');
+  for(let clickedCard of clickedCards) {
+    clickedCard.style.pointerEvents = "none";
   }
-  return count;
+}
+
+function enableCards() {
+  //let cardsToDisable = document.querySelectorAll('.card');
+  for(let clickedCard of clickedCards) {
+    clickedCard.style.removeProperty('pointer-events');
+  }
+}
+
+function starRating() {
+  const stars = document.querySelectorAll('#star');
+  moveCount++;
+  console.log(moveCount);
+
 }
 
 /* Array that holds all cards and the currently open cards */
@@ -94,6 +110,8 @@ let matchedCards = [];
 let flippedCards = [];
 let cards = ['diamond1','diamond2','paper-plane-o1','paper-plane-o2','anchor1','anchor2','bolt1','bolt2','cube1','cube2','leaf1','leaf2','bicycle1','bicycle2','bomb1','bomb2'];
 
+// move counter
+let moveCount = 0;
 /*  Adds each card's HTML to the page */
 document.getElementById('deck-container').innerHTML = createCardLayout(shuffle(cards));
 
