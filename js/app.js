@@ -41,6 +41,8 @@ function displaySymbol() {
   }
 
   if (openCards.length == 2) { // If 2 Cards have been flipped.
+    // Cards have been matched.
+    this.classList.add('flip-card');
     checkMatch();
  }
 }
@@ -60,8 +62,6 @@ function checkMatch() {
 }
 
 function cardsMatch() {
-  // Cards have been matched.
-  this.classList.add('flip-card');
   /*
   Copy the flippedCards array to the matchedCards Array if matchedCards is empty
   else push the flippedCards array to the end of the matchedCards.
