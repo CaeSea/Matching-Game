@@ -23,6 +23,7 @@ function shuffle(array) {
 }
 // Flips each card on click.
 function displaySymbol() {
+
   // Remove the reset card class.
   if (this.classList.contains('reset-card')) {
      this.classList.remove('reset-card');  // If the card has been unflipped before the we must remove that class.
@@ -50,6 +51,8 @@ function displaySymbol() {
 function checkMatch() {
   if (openCards[0] === openCards[1]) { // if the cards match.
 
+    flippedCards[0].classList.add('no-events');
+    flippedCards[1].classList.add('no-events');
     cardsMatch();
 
   } else { // If the cards don't match
@@ -93,7 +96,7 @@ function cardsDontMatch() {
       enableCards();
       // Empty the flippedCards array.
       flippedCards = [];
-    }, 1500);
+    }, 800);
   }
   // Empty the openCards array.
   openCards = [];
@@ -175,7 +178,12 @@ function restartGame() {
 function finishGame() {
   if(matchedCards.length === 16) {
     // Game has been won.
-    modal.style.display = "block";
+
+    // Show modal after 1 second.
+    setTimeout(function(){
+      modal.style.display = "block";
+    }, 1000);
+
     // Removes event listener after game has been won.
     for(clickedCard of clickedCards) {
       clickedCard.removeEventListener('click', displaySymbol);
@@ -187,7 +195,7 @@ function gameTimer() {
   timerStarted = true;
   interval = setInterval(function(){
   second++;
-  timer.innerHTML = minute+"mins "+second+"secs";
+  timer.innerHTML = minute+" Mins "+second+" Secs";
   if(second == 59){
     minute++;
     second = 0;

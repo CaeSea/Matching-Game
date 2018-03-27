@@ -57,6 +57,7 @@ ul.deck {
   border-radius: 10px;
   align-content: center;
   justify-content: center;
+  cursor: pointer;
   -webkit-transition: -webkit-transform 0.5s;
   -moz-transition: -moz-transform 0.5s;
   -o-transition: -o-transform 0.5s;
@@ -101,6 +102,14 @@ ul.deck {
   top: 30%;
   left: 30%;
   font-size: 2.5em;
+}
+
+.restart {
+  cursor: pointer;
+}
+
+.no-events {
+  pointer-events: none;
 }
 
 /*--- Congratulations Modal ---*/
