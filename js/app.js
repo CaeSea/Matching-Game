@@ -83,7 +83,6 @@ function cardsMatch() {
 // Turns all unmatched cards back over.
 function cardsDontMatch() {
   // Flip the 2nd clicked card.
-  console.log(flippedCards);
   flippedCards[1].classList.add('flip-card');
 
   if (!matchedCards.includes(this)) { // If the cards have not yet been matched.
@@ -118,7 +117,7 @@ function enableCards() {
 // Counts the number of moves and takes away stars based on number of moves.
 function moveRating() {
   const starsHolder = document.querySelector('.stars');
-  const stars = starsHolder.children;
+  let stars = starsHolder.children;
   const moveCounter = document.querySelector('.moves');
   moveCount++;
   moveCounter.innerHTML = moveCount;
@@ -130,6 +129,11 @@ function moveRating() {
 }
 // Function that restarts the game on click of restart button.
 function restartGame() {
+
+  // if restart is made from congrats modal, close the modal.
+  if (modal.style.display = "block") {
+    modal.style.display = "none";
+  }
 
   // Shuffle Cards again.
   document.getElementById('deck-container').innerHTML = createCardLayout(shuffle(cards));
@@ -158,10 +162,15 @@ function restartGame() {
   const starsHolder = document.querySelector('.stars');
   let stars = starsHolder.children;
   const li = document.createElement('li');
+  const li2 = document.createElement('li');
   if(stars.length === 1) {
     li.classList.add('star');
-    li.innerHTML = '<i class="fa fa-star"></i>&nbsp;<i class="fa fa-star"></i>';
+    li2.classList.add('star');
+    li.innerHTML = '<i class="fa fa-star"></i>&nbsp;';
+    li2.innerHTML = '<i class="fa fa-star"></i>';
     starsHolder.appendChild(li);
+    starsHolder.appendChild(li2);
+    console.log(stars);
   } else if(stars.length === 2) {
     li.classList.add('star');
     li.innerHTML = '<i class="fa fa-star"></i>';
@@ -178,6 +187,9 @@ function restartGame() {
 function finishGame() {
   if(matchedCards.length === 16) {
     // Game has been won.
+
+    // Stop timer
+    clearInterval(interval);
 
     // Show modal after 1 second.
     setTimeout(function(){
