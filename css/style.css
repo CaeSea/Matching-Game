@@ -1,6 +1,13 @@
 html,
 body {
   margin: 0;
+  font-family: 'Chicle', cursive;
+}
+
+h1 {
+  font-size: 3.5em;
+  margin: 0;
+  padding: 10px;
 }
 
 .container {
@@ -23,6 +30,16 @@ ul.stars li {
   display: inline;
 }
 
+.timer {
+  margin-left: -35px;
+}
+
+.timer,
+.moves,
+.restart {
+  margin-right: 25px;
+}
+
 .restart {
   display: inline-block;
 }
@@ -33,8 +50,8 @@ ul.deck {
   justify-content: center;
   width: 40%;
   margin: 0 auto;
-  padding: 20px 10px;
-  border: 1px solid black;
+  padding: 10px;
+  background: black;
   border-radius: 10px;
 }
 
@@ -76,11 +93,14 @@ ul.deck {
   left: 0;
   width: 100%;
   height: 115px;
+  background: white;
+  border-radius: 10px;
   backface-visibility: hidden;
 }
 
 .back {
   transform: rotateY(180deg);
+  background: red;
 }
 
 .flip-card {
@@ -100,8 +120,21 @@ ul.deck {
 .symbol {
   position: absolute;
   top: 30%;
-  left: 30%;
+  left: 25%;
+  margin: 0;
+  padding: 0;
   font-size: 2.5em;
+  color: white;
+}
+
+.fa-bolt {
+  left: 40% !important;
+}
+
+.fa-anchor,
+.fa-cube,
+.fa-bomb {
+  left: 30% !important;
 }
 
 .restart {

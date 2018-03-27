@@ -121,7 +121,7 @@ function moveRating() {
   let stars = starsHolder.children;
   const moveCounter = document.querySelector('.moves');
   moveCount++;
-  moveCounter.innerHTML = moveCount;
+  moveCounter.innerHTML = moveCount + " Move(s)";
   if (moveCount === 9) {
     starsHolder.removeChild(stars[0]);
   } else if(moveCount === 14) {
