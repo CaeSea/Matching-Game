@@ -153,6 +153,6 @@ ul.deck {
 
 .modal-restart {
   display: inline-block;
-  padding: 48px;
+  padding: 24px;
   cursor: pointer;
 }

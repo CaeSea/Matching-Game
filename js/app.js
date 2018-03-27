@@ -79,6 +79,7 @@ function cardsMatch() {
   flippedCards = [];
   // Empty the openCards array.
   openCards = [];
+  console.log(matchedCards);
 }
 // Turns all unmatched cards back over.
 function cardsDontMatch() {
@@ -178,18 +179,23 @@ function restartGame() {
   }
 
   // Empty arrays
-  let openCards = [];
-  let matchedCards = [];
-  let flippedCards = [];
+  openCards = [];
+  matchedCards = [];
+  flippedCards = [];
 
 }
 // Dispays the congrats modal and takes away the event listeners on the cards.
 function finishGame() {
   if(matchedCards.length === 16) {
     // Game has been won.
-
     // Stop timer
     clearInterval(interval);
+
+    // Populate modal with game info
+    let rating = document.getElementsByClassName('stars');
+    console.log(rating);
+    timeSpan.innerHTML = timer.innerHTML;
+    ratingUl.innerHTML = rating.innerHTML;
 
     // Show modal after 1 second.
     setTimeout(function(){
@@ -200,6 +206,7 @@ function finishGame() {
     for(clickedCard of clickedCards) {
       clickedCard.removeEventListener('click', displaySymbol);
     }
+    matchedCards = [];
   }
 }
 // Function to control the game timer.
@@ -231,6 +238,9 @@ let second = 0, minute = 0;
 let timer = document.querySelector(".timer");
 let interval;
 let timerStarted = false;
+// Modal time & Rating
+const timeSpan = document.getElementById('modal-time');
+const ratingUl = document.getElementById('modal-rating');
 
 /* ------- Adds each card's HTML to the page ------------ */
 document.getElementById('deck-container').innerHTML = createCardLayout(shuffle(cards));
