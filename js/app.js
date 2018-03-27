@@ -77,6 +77,7 @@ function cardsMatch() {
 // Turns all unmatched cards back over.
 function cardsDontMatch() {
   // Flip the 2nd clicked card.
+  console.log(flippedCards);
   flippedCards[1].classList.add('flip-card');
 
   if (!matchedCards.includes(this)) { // If the cards have not yet been matched.
@@ -124,6 +125,43 @@ function moveRating() {
 
 function restartGame() {
 
+  // Shuffle Cards again.
+  document.getElementById('deck-container').innerHTML = createCardLayout(shuffle(cards));
+
+  // Add the listeners again if reset button is clicked.
+  const clickedCards = document.getElementsByClassName("card");
+  let deck = [...clickedCards];
+  // loop to add event listeners to each card
+  for (let i = 0; i < deck.length; i++){
+   deck[i].addEventListener("click", displaySymbol);
+  };
+
+  // Reset move counter.
+  moveCount = 0;
+  const moveCounter = document.querySelector('.moves');
+  moveCounter.innerHTML = 0;
+
+  // Reset timer.
+
+  // Reset stars.
+  const starsHolder = document.querySelector('.stars');
+  let stars = starsHolder.children;
+  const li = document.createElement('li');
+  if(stars.length === 1) {
+    li.classList.add('star');
+    li.innerHTML = '<i class="fa fa-star"></i>&nbsp;<i class="fa fa-star"></i>';
+    starsHolder.appendChild(li);
+  } else if(stars.length === 2) {
+    li.classList.add('star');
+    li.innerHTML = '<i class="fa fa-star"></i>';
+    starsHolder.appendChild(li);
+  }
+
+  // Empty arrays
+  let openCards = [];
+  let matchedCards = [];
+  let flippedCards = [];
+
 }
 
 function finishGame() {
@@ -145,6 +183,16 @@ let cards = ['diamond1','diamond2','paper-plane-o1','paper-plane-o2','anchor1','
 // move counter
 let moveCount = 0;
 
+/* ------- Adds each card's HTML to the page ------------ */
+document.getElementById('deck-container').innerHTML = createCardLayout(shuffle(cards));
+
+const clickedCards = document.getElementsByClassName("card");
+let deck = [...clickedCards];
+// loop to add event listeners to each card
+for (let i = 0; i < deck.length; i++){
+ deck[i].addEventListener("click", displaySymbol);
+};
+
 /*------- Handles closing the congratulations modal ---------*/
 const modal = document.getElementById('myModal');
 // Get the <span> element that closes the modal
@@ -159,23 +207,3 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-
-/*  Adds each card's HTML to the page */
-document.getElementById('deck-container').innerHTML = createCardLayout(shuffle(cards));
-
-/* Adds the click event listener the cards */
-let clickedCards = document.querySelectorAll(".card");
-for(clickedCard of clickedCards) {
-  clickedCard.addEventListener('click', displaySymbol);
-}
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
