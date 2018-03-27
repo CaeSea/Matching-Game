@@ -188,14 +188,17 @@ function restartGame() {
 function finishGame() {
   if(matchedCards.length === 16) {
     // Game has been won.
+
     // Stop timer
     clearInterval(interval);
 
     // Populate modal with game info
-    let rating = document.getElementsByClassName('stars');
-    console.log(rating);
+    let ratings = document.querySelector('.stars');
+    let moves = document.querySelector('.moves');
+    //console.log(rating);
     timeSpan.innerHTML = timer.innerHTML;
-    ratingUl.innerHTML = rating.innerHTML;
+    ratingUl.innerHTML = ratings.innerHTML;
+    movesSpan.innerHTML = moves.innerHTML;
 
     // Show modal after 1 second.
     setTimeout(function(){
@@ -226,7 +229,7 @@ function gameTimer() {
   },1000);
 }
 
-/* Variable Declarations */
+/* ------- Variable Declarations --------- */
 let openCards = [];
 let matchedCards = [];
 let flippedCards = [];
@@ -238,9 +241,10 @@ let second = 0, minute = 0;
 let timer = document.querySelector(".timer");
 let interval;
 let timerStarted = false;
-// Modal time & Rating
-const timeSpan = document.getElementById('modal-time');
-const ratingUl = document.getElementById('modal-rating');
+// Modal time, rating and moves.
+let timeSpan = document.getElementById('modal-time');
+let ratingUl = document.getElementById('modal-rating');
+let movesSpan = document.getElementById('modal-moves');
 
 /* ------- Adds each card's HTML to the page ------------ */
 document.getElementById('deck-container').innerHTML = createCardLayout(shuffle(cards));
