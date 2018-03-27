@@ -129,6 +129,11 @@ function restartGame() {
 function finishGame() {
   if(matchedCards.length === 16) {
     // Game has been won.
+    modal.style.display = "block";
+    // Removes event listener after game has been won.
+    for(clickedCard of clickedCards) {
+      clickedCard.removeEventListener('click', displaySymbol);
+    }
   }
 }
 
