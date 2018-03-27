@@ -122,7 +122,7 @@ function moveRating() {
     starsHolder.removeChild(stars[1]);
   }
 }
-
+// Function that restarts the game on click of restart button.
 function restartGame() {
 
   // Shuffle Cards again.
@@ -142,6 +142,7 @@ function restartGame() {
   moveCounter.innerHTML = 0;
 
   // Reset timer.
+
 
   // Reset stars.
   const starsHolder = document.querySelector('.stars');
@@ -163,7 +164,7 @@ function restartGame() {
   let flippedCards = [];
 
 }
-
+// Dispays the congrats modal and takes away the event listeners on the cards.
 function finishGame() {
   if(matchedCards.length === 16) {
     // Game has been won.
@@ -175,6 +176,21 @@ function finishGame() {
   }
 }
 
+function gameTimer() {
+  interval = setInterval(function(){
+  second++;
+  timer.innerHTML = minute+"mins "+second+"secs";
+  if(second == 60){
+    minute++;
+    second = 0;
+  }
+  if(minute == 60){
+    hour++;
+    minute = 0;
+  }
+  },1000);
+}
+
 /* Variable Declarations */
 let openCards = [];
 let matchedCards = [];
@@ -182,10 +198,15 @@ let flippedCards = [];
 let cards = ['diamond1','diamond2','paper-plane-o1','paper-plane-o2','anchor1','anchor2','bolt1','bolt2','cube1','cube2','leaf1','leaf2','bicycle1','bicycle2','bomb1','bomb2'];
 // move counter
 let moveCount = 0;
+// Timer vars
+let second = 0, minute = 0;
+let timer = document.querySelector(".timer");
+let interval;
 
 /* ------- Adds each card's HTML to the page ------------ */
 document.getElementById('deck-container').innerHTML = createCardLayout(shuffle(cards));
 
+// Grabs the cards on the page.
 const clickedCards = document.getElementsByClassName("card");
 let deck = [...clickedCards];
 // loop to add event listeners to each card
