@@ -41,6 +41,9 @@ function displaySymbol() {
     this.classList.add('flip-card');
     moveRating();
     checkMatch();
+    if(!timerStarted) {
+      gameTimer();
+    }
  }
 }
 // Checks if cards match on each flip.
@@ -142,7 +145,11 @@ function restartGame() {
   moveCounter.innerHTML = 0;
 
   // Reset timer.
-
+  let timer = document.querySelector(".timer");
+  timerStarted = false;
+  second = 0, minute = 0;
+  timer.innerHTML = "0 Mins 0 Secs";
+  clearInterval(interval);
 
   // Reset stars.
   const starsHolder = document.querySelector('.stars');
@@ -175,16 +182,17 @@ function finishGame() {
     }
   }
 }
-
+// Function to control the game timer.
 function gameTimer() {
+  timerStarted = true;
   interval = setInterval(function(){
   second++;
   timer.innerHTML = minute+"mins "+second+"secs";
-  if(second == 60){
+  if(second == 59){
     minute++;
     second = 0;
   }
-  if(minute == 60){
+  if(minute == 59){
     hour++;
     minute = 0;
   }
@@ -202,6 +210,7 @@ let moveCount = 0;
 let second = 0, minute = 0;
 let timer = document.querySelector(".timer");
 let interval;
+let timerStarted = false;
 
 /* ------- Adds each card's HTML to the page ------------ */
 document.getElementById('deck-container').innerHTML = createCardLayout(shuffle(cards));
