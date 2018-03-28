@@ -176,6 +176,8 @@ ul.deck {
   -moz-transform: rotateY( 180deg );
   -o-transform: rotateY( 180deg );
   transform: rotateY( 180deg );
+  animation-name: example;
+  animation-duration: 4s;
 }
 
 .reset-card {
