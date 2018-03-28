@@ -283,11 +283,11 @@ ul.deck {
 
   .front,
   .back {
-    height: 100px;
+    height: 80px;
   }
 
   .card {
-    height: 100px;
+    height: 80px;
   }
 
   .symbol {
