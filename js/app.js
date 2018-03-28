@@ -150,7 +150,7 @@ function restartGame() {
   // Reset move counter.
   moveCount = 0;
   const moveCounter = document.querySelector('.moves');
-  moveCounter.innerHTML = 0;
+  moveCounter.innerHTML = 0 + " Move(s)";
 
   // Reset timer.
   let timer = document.querySelector(".timer");
