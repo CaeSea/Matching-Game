@@ -69,14 +69,13 @@ function cardsMatch() {
   Copy the flippedCards array to the matchedCards Array if matchedCards is empty
   else push the flippedCards array to the end of the matchedCards.
   */
-  
+
   if (matchedCards.length == 0) {
     matchedCards = flippedCards.splice(0);
   } else {
     matchedCards.push(...flippedCards);
   }
-  //flippedCards[0].classList.add('card-matched');
-  //flippedCards[1].classList.add('card-matched');
+
   finishGame();
   // Empty the flippedCards array.
   flippedCards = [];
