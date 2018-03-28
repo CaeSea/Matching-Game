@@ -167,7 +167,7 @@ function restartGame() {
   if(stars.length === 1) {
     li.classList.add('star');
     li2.classList.add('star');
-    li.innerHTML = '<i class="fa fa-star"></i>&nbsp;';
+    li.innerHTML = '<i class="fa fa-star"></i>';
     li2.innerHTML = '<i class="fa fa-star"></i>';
     starsHolder.appendChild(li);
     starsHolder.appendChild(li2);

@@ -27,9 +27,15 @@ ul {
 h1 {
   font-size: 3.5em;
   margin: 0;
-  padding: 10px;
+  padding: 3px;
   color: #0e0b16;
   opacity: 0.9;
+}
+
+h2 {
+  font-size: 2.5em;
+  margin: 0;
+  padding: 0;
 }
 
 em {
@@ -46,14 +52,34 @@ em {
 
 header,
 .score-panel {
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+  margin: 0 auto;
   margin-bottom: 15px;
   font-size: 1.1em;
 }
 
-ul.stars li {
-  display: inline;
+header {
+  width: 100%;
+}
+
+ul.stars {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: center;
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+li.star {
+  display: inline-flex;
+  flex-basis: 10px;
   color: red;
+  margin-right: 20px;
+  margin-bottom: 5px;
 }
 
 .timer {
@@ -143,22 +169,6 @@ ul.deck {
   color: white;
 }
 
-.fa-bolt {
-  left: 41%
-}
-
-.fa-diamond,
-.fa-cube, {
-  left: 39% !important;
-}
-
-.fa-anchor,
-.fa-bomb,
-.fa-leaf.
-{
-  left: 34% !important;
-}
-
 /*--- Animations ---*/
 
 .flip-card {
@@ -200,7 +210,8 @@ ul.deck {
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 60%; /* Could be more or less, depending on screen size */
+    text-align: center;
 }
 
 /* The Close Button */
@@ -226,29 +237,57 @@ ul.deck {
 
 /*--- Media Queries ---*/
 @media screen and (max-width: 950px) {
-  /* Look at symbol placement  */
+
+  .score-panel {
+    width: 70%;
+  }
+
   ul.deck {
     width: 70%;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 630px) {
+
+  h1 {
+    font-size: 2.5em;
+  }
+
+  .score-panel {
+    width: 90%;
+  }
+
   ul.deck {
     width: 90%;
   }
 }
 
-@media screen and (max-width: 400px) {
-  ul.deck {
+@media screen and (max-width: 460px) {
+
+  h1 {
+    font-size: 1.5em;
+    margin-top: 50px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+    margin-top: 50px;
+  }
+
+  .ul.stars {
     width: 90%;
   }
 
   .front,
   .back {
-    height: 90px;
+    height: 100px;
   }
 
   .card {
-    height: 90px;
+    height: 100px;
+  }
+
+  .symbol {
+    font-size: 2em;
   }
 }
